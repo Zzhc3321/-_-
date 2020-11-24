@@ -1,0 +1,562 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+  \usepackage{amssymb}
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{logistic-regression}{%
+\section{Logistic Regression}\label{logistic-regression}}
+
+\hypertarget{ux5047ux8bbeux67d0ux4e00ux8bfeux7a0bux6210ux7ee9ux7684ux662fux7531ux591aux4e2aux56e0ux7d20ux51b3ux5b9aux5176ux4e2dux5e73ux65f6ux6210ux7ee9ux548cux671fux672bux6210ux7ee9ux4e24ux90e8ux5206ux8d77ux5230ux51b3ux5b9aux6027ux4f5cux7528ux53eaux6709ux6ee1ux8db3ux6761ux4ef6ux624dux80fdux5f97ux5230ux4f18ux79c0}{%
+\section{假设某一课程成绩的是由多个因素决定，其中平时成绩和期末成绩两部分起到决定性作用，只有满足条件，才能得到优秀}\label{ux5047ux8bbeux67d0ux4e00ux8bfeux7a0bux6210ux7ee9ux7684ux662fux7531ux591aux4e2aux56e0ux7d20ux51b3ux5b9aux5176ux4e2dux5e73ux65f6ux6210ux7ee9ux548cux671fux672bux6210ux7ee9ux4e24ux90e8ux5206ux8d77ux5230ux51b3ux5b9aux6027ux4f5cux7528ux53eaux6709ux6ee1ux8db3ux6761ux4ef6ux624dux80fdux5f97ux5230ux4f18ux79c0}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ pandas }\ImportTok{as}\NormalTok{ pd}
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\ImportTok{import}\NormalTok{ matplotlib.pyplot }\ImportTok{as}\NormalTok{ plt}
+\ImportTok{import}\NormalTok{ seaborn }\ImportTok{as}\NormalTok{ sns}
+\ImportTok{from}\NormalTok{ scipy.stats }\ImportTok{import}\NormalTok{ norm}
+\ImportTok{from}\NormalTok{ scipy }\ImportTok{import}\NormalTok{ stats}
+\ImportTok{import}\NormalTok{ datetime}
+\ImportTok{import}\NormalTok{ random}
+\ImportTok{import}\NormalTok{ warnings}
+\NormalTok{warnings.filterwarnings(}\StringTok{\textquotesingle{}ignore\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.rcParams[}\StringTok{\textquotesingle{}font.sans{-}serif\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ [}\StringTok{\textquotesingle{}SimHei\textquotesingle{}}\NormalTok{]}
+\NormalTok{plt.rcParams[}\StringTok{\textquotesingle{}axes.unicode\_minus\textquotesingle{}}\NormalTok{] }\OperatorTok{=} \VariableTok{False}
+
+\ImportTok{import}\NormalTok{ matplotlib.pyplot }\ImportTok{as}\NormalTok{ plt}
+\OperatorTok{\%}\NormalTok{matplotlib inline}
+\end{Highlighting}
+\end{Shaded}
+
+先随机生成一些数
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lower, upper }\OperatorTok{=} \DecValTok{0}\NormalTok{, }\DecValTok{100}
+\NormalTok{mu1, sigma1 }\OperatorTok{=} \DecValTok{90}\NormalTok{, }\DecValTok{10}
+\NormalTok{mu2, sigma2 }\OperatorTok{=} \DecValTok{85}\NormalTok{, }\DecValTok{10}
+
+\NormalTok{X1 }\OperatorTok{=}\NormalTok{ stats.truncnorm(}
+\NormalTok{    (lower }\OperatorTok{{-}}\NormalTok{ mu1) }\OperatorTok{/}\NormalTok{ sigma1, (upper }\OperatorTok{{-}}\NormalTok{ mu1) }\OperatorTok{/}\NormalTok{ sigma1, loc}\OperatorTok{=}\NormalTok{mu1, scale}\OperatorTok{=}\NormalTok{sigma1)}\CommentTok{\#有区间限制的随机数}
+
+\NormalTok{X2 }\OperatorTok{=}\NormalTok{ stats.truncnorm(}
+\NormalTok{    (lower }\OperatorTok{{-}}\NormalTok{ mu2) }\OperatorTok{/}\NormalTok{ sigma2, (upper }\OperatorTok{{-}}\NormalTok{ mu2) }\OperatorTok{/}\NormalTok{ sigma2, loc}\OperatorTok{=}\NormalTok{mu2, scale}\OperatorTok{=}\NormalTok{sigma2)}\CommentTok{\#有区间限制的随机数}
+
+\NormalTok{x1 }\OperatorTok{=}\NormalTok{ X1.rvs(}\DecValTok{1000}\NormalTok{)}
+\NormalTok{x2 }\OperatorTok{=}\NormalTok{ X2.rvs(}\DecValTok{1000}\NormalTok{)}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ np.zeros(}\DecValTok{1000}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\BuiltInTok{len}\NormalTok{(x1)):}
+    
+    \ControlFlowTok{if}\NormalTok{(}\FloatTok{0.4}\OperatorTok{*}\NormalTok{x1[i]}\OperatorTok{+}\FloatTok{0.6}\OperatorTok{*}\NormalTok{x2[i])}\OperatorTok{+}\NormalTok{random.randint(}\DecValTok{0}\NormalTok{,}\DecValTok{5}\NormalTok{)}\OperatorTok{\textgreater{}}\DecValTok{92}\NormalTok{:}
+\NormalTok{        y[i] }\OperatorTok{=} \DecValTok{1}
+    \ControlFlowTok{if}\NormalTok{ x2[i]}\OperatorTok{\textgreater{}}\DecValTok{98} \KeywordTok{or}\NormalTok{ x1[i]}\OperatorTok{\textgreater{}}\DecValTok{98}\NormalTok{:}
+\NormalTok{        y[i] }\OperatorTok{=} \DecValTok{1}
+    \ControlFlowTok{if}\NormalTok{ x2[i]}\OperatorTok{\textless{}}\DecValTok{60} \KeywordTok{or}\NormalTok{ x1[i]}\OperatorTok{\textless{}}\DecValTok{60}\NormalTok{:}
+\NormalTok{        y[i] }\OperatorTok{=} \DecValTok{0}
+
+\NormalTok{X }\OperatorTok{=}\NormalTok{ []}
+\NormalTok{c }\OperatorTok{=} \BuiltInTok{zip}\NormalTok{(x1,x2)}
+\NormalTok{X }\OperatorTok{=}\NormalTok{ np.array(}\BuiltInTok{list}\NormalTok{(c))}
+\NormalTok{X[:,}\DecValTok{1}\NormalTok{] }\OperatorTok{=}\NormalTok{ ((X[:,}\DecValTok{1}\NormalTok{] }\OperatorTok{{-}}\NormalTok{ np.}\BuiltInTok{min}\NormalTok{(X[:,}\DecValTok{1}\NormalTok{])) }\OperatorTok{/}\NormalTok{ (np.}\BuiltInTok{max}\NormalTok{(X[:,}\DecValTok{1}\NormalTok{]) }\OperatorTok{{-}}\NormalTok{ np.}\BuiltInTok{min}\NormalTok{(X[:,}\DecValTok{1}\NormalTok{])))}
+\NormalTok{pdData }\OperatorTok{=}\NormalTok{ pd.DataFrame(X,columns}\OperatorTok{=}\NormalTok{[}\StringTok{\textquotesingle{}x1\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}x2\textquotesingle{}}\NormalTok{])}
+\NormalTok{pdData.insert(}\BuiltInTok{len}\NormalTok{(X[}\DecValTok{0}\NormalTok{]),}\StringTok{\textquotesingle{}Y\textquotesingle{}}\NormalTok{,y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pdData.shape}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+(1000, 3)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{positive }\OperatorTok{=}\NormalTok{ pdData[pdData[}\StringTok{\textquotesingle{}Y\textquotesingle{}}\NormalTok{] }\OperatorTok{==} \DecValTok{1}\NormalTok{]}
+\NormalTok{negative }\OperatorTok{=}\NormalTok{ pdData[pdData[}\StringTok{\textquotesingle{}Y\textquotesingle{}}\NormalTok{] }\OperatorTok{==} \DecValTok{0}\NormalTok{]}
+
+\NormalTok{fig, ax }\OperatorTok{=}\NormalTok{ plt.subplots(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{10}\NormalTok{,}\DecValTok{5}\NormalTok{))}
+\NormalTok{ax.scatter(positive[}\StringTok{\textquotesingle{}x1\textquotesingle{}}\NormalTok{], positive[}\StringTok{\textquotesingle{}x2\textquotesingle{}}\NormalTok{], s}\OperatorTok{=}\DecValTok{30}\NormalTok{, c}\OperatorTok{=}\StringTok{\textquotesingle{}b\textquotesingle{}}\NormalTok{, marker}\OperatorTok{=}\StringTok{\textquotesingle{}o\textquotesingle{}}\NormalTok{, label}\OperatorTok{=}\StringTok{\textquotesingle{}获得优秀\textquotesingle{}}\NormalTok{)}
+\NormalTok{ax.scatter(negative[}\StringTok{\textquotesingle{}x1\textquotesingle{}}\NormalTok{], negative[}\StringTok{\textquotesingle{}x2\textquotesingle{}}\NormalTok{], s}\OperatorTok{=}\DecValTok{30}\NormalTok{, c}\OperatorTok{=}\StringTok{\textquotesingle{}r\textquotesingle{}}\NormalTok{, marker}\OperatorTok{=}\StringTok{\textquotesingle{}x\textquotesingle{}}\NormalTok{, label}\OperatorTok{=}\StringTok{\textquotesingle{}为获得优秀\textquotesingle{}}\NormalTok{)}
+\NormalTok{ax.legend()}
+\NormalTok{ax.set\_xlabel(}\StringTok{\textquotesingle{}平时成绩\textquotesingle{}}\NormalTok{)}
+\NormalTok{ax.set\_ylabel(}\StringTok{\textquotesingle{}期末成绩\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Text(0, 0.5, '期末成绩')
+\end{verbatim}
+
+\includegraphics{96d5c447fe7994e54bd55444d1ffa8914cd4ffce.png}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\NormalTok{pdData.insert(}\DecValTok{0}\NormalTok{, }\StringTok{\textquotesingle{}Ones\textquotesingle{}}\NormalTok{, }\DecValTok{1}\NormalTok{) }
+
+\NormalTok{orig\_data }\OperatorTok{=}\NormalTok{ pdData.as\_matrix() }
+\NormalTok{cols }\OperatorTok{=}\NormalTok{ orig\_data.shape[}\DecValTok{1}\NormalTok{]}
+\NormalTok{X }\OperatorTok{=}\NormalTok{ orig\_data[:,}\DecValTok{0}\NormalTok{:cols}\OperatorTok{{-}}\DecValTok{1}\NormalTok{]}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ orig\_data[:,cols}\OperatorTok{{-}}\DecValTok{1}\NormalTok{:cols]}
+
+\NormalTok{theta }\OperatorTok{=}\NormalTok{ np.zeros([}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X.shape, y.shape, theta.shape}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+((1000, 3), (1000, 1), (1, 3))
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ sklearn }\ImportTok{import}\NormalTok{ preprocessing }\ImportTok{as}\NormalTok{ pp}
+
+\NormalTok{scaled\_data }\OperatorTok{=}\NormalTok{ orig\_data.copy()}
+\NormalTok{scaled\_data[:,}\DecValTok{1}\NormalTok{:}\DecValTok{3}\NormalTok{] }\OperatorTok{=}\NormalTok{ pp.scale(orig\_data[:,}\DecValTok{1}\NormalTok{:}\DecValTok{3}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{the-logistic-regression}{%
+\subsection{The logistic regression}\label{the-logistic-regression}}
+
+建立logistic分类器（因为有两维特征，所以目标求解出三个参数
+\$\textbackslash theta\_0 \textbackslash theta\_1
+\textbackslash theta\_2 \$）
+
+sigmoid : 映射到概率的函数
+
+model : 返回预测结果
+
+predict: 预测结果（根据阈值判断）
+
+loss : 计算损失
+
+reset: 打乱数据
+
+gradient : 计算梯度
+
+descent : 参数更新
+
+accuracy: 计算精度并绘制confusion matrix图
+
+\hypertarget{sigmoid-ux51fdux6570}{%
+\subsubsection{\texorpdfstring{\texttt{sigmoid}
+函数}{sigmoid 函数}}\label{sigmoid-ux51fdux6570}}
+
+\[
+g(z) = \frac{1}{1+e^{-z}}   
+\]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ sigmoid(z):}
+    \ControlFlowTok{return} \DecValTok{1} \OperatorTok{/}\NormalTok{ (}\DecValTok{1} \OperatorTok{+}\NormalTok{ np.exp(}\OperatorTok{{-}}\NormalTok{z))}
+\end{Highlighting}
+\end{Shaded}
+
+\[
+\begin{array}{ccc}
+\begin{pmatrix}\theta_{0} & \theta_{1} & \theta_{2}\end{pmatrix} & \times & \begin{pmatrix}1\\
+x_{1}\\
+x_{2}
+\end{pmatrix}\end{array}=\theta_{0}+\theta_{1}x_{1}+\theta_{2}x_{2}
+\]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ model(X, theta):}
+    \ControlFlowTok{return}\NormalTok{ sigmoid(np.dot(X, theta.T))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux635fux5931ux51fdux6570}{%
+\subsubsection{损失函数}\label{ux635fux5931ux51fdux6570}}
+
+将对数似然函数去负号
+
+\[
+D(h_\theta(x), y) = -y\log(h_\theta(x)) - (1-y)\log(1-h_\theta(x))
+\] 求平均损失 \[
+J(\theta)=\frac{1}{n}\sum_{i=1}^{n} D(h_\theta(x_i), y_i)
+\]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ loss(X, y, theta):}
+\NormalTok{    d1 }\OperatorTok{=}\NormalTok{ np.multiply(}\OperatorTok{{-}}\NormalTok{y, np.log(model(X, theta)))}
+\NormalTok{    d2 }\OperatorTok{=}\NormalTok{ np.multiply(}\DecValTok{1} \OperatorTok{{-}}\NormalTok{ y, np.log(}\DecValTok{1} \OperatorTok{{-}}\NormalTok{ model(X, theta)))}
+    \ControlFlowTok{return}\NormalTok{ np.}\BuiltInTok{sum}\NormalTok{(d1 }\OperatorTok{{-}}\NormalTok{ d2) }\OperatorTok{/}\NormalTok{ (}\BuiltInTok{len}\NormalTok{(X))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux8ba1ux7b97ux68afux5ea6}{%
+\subsubsection{计算梯度}\label{ux8ba1ux7b97ux68afux5ea6}}
+
+\[
+\frac{\partial J}{\partial \theta_j}=-\frac{1}{m}\sum_{i=1}^n (y_i - h_\theta (x_i))x_{ij}
+\]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ gradient(X, y, theta):}
+\NormalTok{    grad }\OperatorTok{=}\NormalTok{ np.zeros(theta.shape)}
+\NormalTok{    err }\OperatorTok{=}\NormalTok{ (model(X, theta)}\OperatorTok{{-}}\NormalTok{ y).ravel()}
+    \ControlFlowTok{for}\NormalTok{ j }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\BuiltInTok{len}\NormalTok{(theta.ravel())):}
+\NormalTok{        ej }\OperatorTok{=}\NormalTok{ np.multiply(err, X[:,j])}
+\NormalTok{        grad[}\DecValTok{0}\NormalTok{, j] }\OperatorTok{=}\NormalTok{ np.}\BuiltInTok{sum}\NormalTok{(ej) }\OperatorTok{/} \BuiltInTok{len}\NormalTok{(X)}
+    \ControlFlowTok{return}\NormalTok{ grad}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ reset(data):}
+\NormalTok{    np.random.shuffle(data)}
+\NormalTok{    cols }\OperatorTok{=}\NormalTok{ data.shape[}\DecValTok{1}\NormalTok{]}
+\NormalTok{    X }\OperatorTok{=}\NormalTok{ data[:, }\DecValTok{0}\NormalTok{:cols}\OperatorTok{{-}}\DecValTok{1}\NormalTok{]}
+\NormalTok{    y }\OperatorTok{=}\NormalTok{ data[:, cols}\OperatorTok{{-}}\DecValTok{1}\NormalTok{:]}
+    \ControlFlowTok{return}\NormalTok{ X, y}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{gradient-descent}{%
+\subsubsection{Gradient descent}\label{gradient-descent}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ time}
+
+\KeywordTok{def}\NormalTok{ descent(data, theta, N,batchSize,  alpha):}
+
+\NormalTok{    i }\OperatorTok{=} \DecValTok{0} \CommentTok{\# 迭代次数}
+\NormalTok{    k }\OperatorTok{=} \DecValTok{0}
+\NormalTok{    X, y }\OperatorTok{=}\NormalTok{ reset(data)}
+\NormalTok{    grad }\OperatorTok{=}\NormalTok{ np.zeros(theta.shape) }\CommentTok{\# 梯度}
+\NormalTok{    losss }\OperatorTok{=}\NormalTok{ [loss(X, y, theta)] }\CommentTok{\# 损失}
+\NormalTok{    n }\OperatorTok{=} \BuiltInTok{len}\NormalTok{(data[:,}\DecValTok{1}\NormalTok{])}
+    
+    \ControlFlowTok{while} \VariableTok{True}\NormalTok{:}
+\NormalTok{        grad }\OperatorTok{=}\NormalTok{ gradient(X[k:k}\OperatorTok{+}\NormalTok{batchSize], y[k:k}\OperatorTok{+}\NormalTok{batchSize], theta)}
+\NormalTok{        k }\OperatorTok{+=}\NormalTok{ batchSize}
+        \ControlFlowTok{if}\NormalTok{ k }\OperatorTok{\textgreater{}=}\NormalTok{ n: }
+\NormalTok{            k }\OperatorTok{=} \DecValTok{0} 
+\NormalTok{            X, y }\OperatorTok{=}\NormalTok{ reset(data)}
+\NormalTok{        theta }\OperatorTok{=}\NormalTok{ theta }\OperatorTok{{-}}\NormalTok{ alpha}\OperatorTok{*}\NormalTok{grad }\CommentTok{\# 参数更新}
+
+\NormalTok{        losss.append(loss(X, y, theta)) }\CommentTok{\# 计算新的损失}
+\NormalTok{        i }\OperatorTok{+=} \DecValTok{1} 
+        \ControlFlowTok{if}\NormalTok{ i}\OperatorTok{\textgreater{}}\NormalTok{N: }\ControlFlowTok{break}
+    
+    \ControlFlowTok{return}\NormalTok{ theta, i}\OperatorTok{{-}}\DecValTok{1}\NormalTok{, losss, grad}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ drawpic(data,theta, N,batchSize, alpha):}
+\NormalTok{    n }\OperatorTok{=} \BuiltInTok{len}\NormalTok{(data[:,}\DecValTok{1}\NormalTok{])}
+\NormalTok{    theta, }\BuiltInTok{iter}\NormalTok{, costs, grad }\OperatorTok{=}\NormalTok{ descent(data, theta, N,batchSize, alpha)}
+
+    \ControlFlowTok{if}\NormalTok{ batchSize}\OperatorTok{==}\NormalTok{n: strDescType }\OperatorTok{=} \StringTok{"批量"} \OperatorTok{+} \StringTok{\textquotesingle{} alpha is }\SpecialCharTok{\{\}}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(alpha) }\OperatorTok{+} \StringTok{\textquotesingle{} loss is }\SpecialCharTok{\{\}}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(costs[}\OperatorTok{{-}}\DecValTok{1}\NormalTok{])}
+    \ControlFlowTok{elif}\NormalTok{ batchSize}\OperatorTok{==}\DecValTok{1}\NormalTok{:  strDescType }\OperatorTok{=} \StringTok{"随机梯度"} \OperatorTok{+} \StringTok{\textquotesingle{} alpha is }\SpecialCharTok{\{\}}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(alpha) }\OperatorTok{+} \StringTok{\textquotesingle{} loss is }\SpecialCharTok{\{\}}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(costs[}\OperatorTok{{-}}\DecValTok{1}\NormalTok{])}
+    \ControlFlowTok{else}\NormalTok{: strDescType }\OperatorTok{=} \StringTok{"小批量 (}\SpecialCharTok{\{\}}\StringTok{)"}\NormalTok{.}\BuiltInTok{format}\NormalTok{(batchSize) }\OperatorTok{+}  \StringTok{\textquotesingle{} alpha is }\SpecialCharTok{\{\}}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(alpha) }\OperatorTok{+}\StringTok{\textquotesingle{} loss is }\SpecialCharTok{\{\}}\StringTok{\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(costs[}\OperatorTok{{-}}\DecValTok{1}\NormalTok{])}
+
+\NormalTok{    fig, ax }\OperatorTok{=}\NormalTok{ plt.subplots(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{12}\NormalTok{,}\DecValTok{4}\NormalTok{))}
+\NormalTok{    ax.plot(np.arange(}\BuiltInTok{len}\NormalTok{(costs)), costs, }\StringTok{\textquotesingle{}r\textquotesingle{}}\NormalTok{)}
+\NormalTok{    ax.set\_xlabel(}\StringTok{\textquotesingle{}次数\textquotesingle{}}\NormalTok{)}
+\NormalTok{    ax.set\_ylabel(}\StringTok{\textquotesingle{}损失\textquotesingle{}}\NormalTok{)}
+\NormalTok{    ax.set\_title(strDescType)}
+
+    \ControlFlowTok{return}\NormalTok{ theta}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux4e0dux540cux7b56ux7565}{%
+\subsubsection{不同策略}\label{ux4e0dux540cux7b56ux7565}}
+
+\hypertarget{ux8fedux4ee3ux6b21ux6570ux4e0dux53d8ux6539ux53d8ux5b66ux4e60ux7387-ux8bbeux5b9aux5b66ux4e60ux7387}{%
+\paragraph{(迭代次数不变，改变学习率)
+设定学习率}\label{ux8fedux4ee3ux6b21ux6570ux4e0dux53d8ux6539ux53d8ux5b66ux4e60ux7387-ux8bbeux5b9aux5b66ux4e60ux7387}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{drawpic(scaled\_data,np.array([[}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{]]),}\DecValTok{10000}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{)}
+\NormalTok{drawpic(scaled\_data,np.array([[}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{]]),}\DecValTok{10000}\NormalTok{,}\DecValTok{1}\NormalTok{,}\FloatTok{0.1}\NormalTok{)}
+\NormalTok{drawpic(scaled\_data,np.array([[}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{]]),}\DecValTok{10000}\NormalTok{,}\DecValTok{1}\NormalTok{,}\FloatTok{0.01}\NormalTok{)}
+\NormalTok{drawpic(scaled\_data,np.array([[}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{]]),}\DecValTok{10000}\NormalTok{,}\DecValTok{1}\NormalTok{,}\FloatTok{0.001}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+array([[-0.90882123,  0.88131039,  1.20955307]])
+\end{verbatim}
+
+\includegraphics{daeb688bf72bd185d7b5643ef311dca5d33d2c35.png}
+
+\includegraphics{0a49a2f5ceb1bbdd31660840cdb7b292df851bd9.png}
+
+\includegraphics{c85ea10aa5fd7ee110ff112dc1a88300ae30489d.png}
+
+\includegraphics{9ea5a62561bf5fa62cbf85dc9a67ad4d9c182a03.png}
+
+\hypertarget{ux5b66ux4e60ux7387ux4e0dux53d8ux6539ux53d8ux8fedux4ee3ux6b21ux6570-ux5f88ux76f4ux89c2-ux8fedux4ee3ux6b21ux6570ux8d8aux591aux6548ux679cux635fux5931ux8d8aux5c0f}{%
+\paragraph{(学习率不变，改变迭代次数) 很直观
+迭代次数越多效果损失越小}\label{ux5b66ux4e60ux7387ux4e0dux53d8ux6539ux53d8ux8fedux4ee3ux6b21ux6570-ux5f88ux76f4ux89c2-ux8fedux4ee3ux6b21ux6570ux8d8aux591aux6548ux679cux635fux5931ux8d8aux5c0f}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{theta }\OperatorTok{=}\NormalTok{ drawpic(scaled\_data,np.array([[}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{]]),}\DecValTok{100}\NormalTok{,}\DecValTok{1}\NormalTok{,}\FloatTok{0.1}\NormalTok{)}
+\NormalTok{theta }\OperatorTok{=}\NormalTok{ drawpic(scaled\_data,np.array([[}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{]]),}\DecValTok{1000}\NormalTok{,}\DecValTok{1}\NormalTok{,}\FloatTok{0.1}\NormalTok{)}
+\NormalTok{theta }\OperatorTok{=}\NormalTok{ drawpic(scaled\_data,np.array([[}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{]]),}\DecValTok{10000}\NormalTok{,}\DecValTok{1}\NormalTok{,}\FloatTok{0.1}\NormalTok{)}
+\NormalTok{theta }\OperatorTok{=}\NormalTok{ drawpic(scaled\_data,np.array([[}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{]]),}\DecValTok{100000}\NormalTok{,}\DecValTok{1}\NormalTok{,}\FloatTok{0.1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{0333fa5fe82023b8917310d330dd299157da2816.png}
+
+\includegraphics{766a7b323166163f327fccaf7a4eeb95ff47fc19.png}
+
+\includegraphics{1904b529ed87d86492d30f16144e520e11fd3b06.png}
+
+\includegraphics{567b3f7692e27e88fa9414250fe46e08aa2c8099.png}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux5bf9ux6bd4ux4e0dux540cux7684ux68afux5ea6ux4e0bux964dux65b9ux6cd5}{%
+\subsubsection{对比不同的梯度下降方法}\label{ux5bf9ux6bd4ux4e0dux540cux7684ux68afux5ea6ux4e0bux964dux65b9ux6cd5}}
+
+\hypertarget{ux5bf9ux6bd4ux968fux673aux5c0fux6279ux91cfux6279ux91cf-ux91cfux8d8aux635fux5931ux8d8aux5c0fux4f46ux662fux6240ux9700ux65f6ux95f4ux8d8aux957fux5e76ux4e14ux53d8ux5316ux4e0dux660eux663e}{%
+\subsubsection{对比随机，小批量，批量
+量越损失越小，但是所需时间越长，并且变化不明显}\label{ux5bf9ux6bd4ux968fux673aux5c0fux6279ux91cfux6279ux91cf-ux91cfux8d8aux635fux5931ux8d8aux5c0fux4f46ux662fux6240ux9700ux65f6ux95f4ux8d8aux957fux5e76ux4e14ux53d8ux5316ux4e0dux660eux663e}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{theta }\OperatorTok{=}\NormalTok{ drawpic(scaled\_data,np.array([[}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{]]),}\DecValTok{10000}\NormalTok{,}\DecValTok{1}\NormalTok{,}\FloatTok{0.1}\NormalTok{)}
+\NormalTok{theta }\OperatorTok{=}\NormalTok{ drawpic(scaled\_data,np.array([[}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{]]),}\DecValTok{10000}\NormalTok{,}\DecValTok{10}\NormalTok{,}\FloatTok{0.1}\NormalTok{)}
+\NormalTok{theta }\OperatorTok{=}\NormalTok{ drawpic(scaled\_data,np.array([[}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{]]),}\DecValTok{10000}\NormalTok{,}\DecValTok{100}\NormalTok{,}\FloatTok{0.1}\NormalTok{)}
+\NormalTok{theta }\OperatorTok{=}\NormalTok{ drawpic(scaled\_data,np.array([[}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{]]),}\DecValTok{10000}\NormalTok{,}\DecValTok{500}\NormalTok{,}\FloatTok{0.1}\NormalTok{)}
+\NormalTok{theta }\OperatorTok{=}\NormalTok{ drawpic(scaled\_data,np.array([[}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{]]),}\DecValTok{10000}\NormalTok{,}\DecValTok{1000}\NormalTok{,}\FloatTok{0.1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{020226a6045d1b5d48885f9cfc23003999e59f55.png}
+
+\includegraphics{cc3430519e0105826aa2e85cd8bd689942a2d1cd.png}
+
+\includegraphics{6e933dbd8c38ec002b35d92baef64506eaf11eb7.png}
+
+\includegraphics{61fbe6b3d78dd8f75655f7e1dae378ecec64cb48.png}
+
+\includegraphics{e34d1c3eacd0d3eaf3824f7d671f7989c0574a62.png}
+
+\hypertarget{ux7cbeux5ea6}{%
+\subsection{精度}\label{ux7cbeux5ea6}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ predict(X, theta):}
+    \ControlFlowTok{return}\NormalTok{ [}\DecValTok{1} \ControlFlowTok{if}\NormalTok{ x }\OperatorTok{\textgreater{}=} \FloatTok{0.5} \ControlFlowTok{else} \DecValTok{0} \ControlFlowTok{for}\NormalTok{ x }\KeywordTok{in}\NormalTok{ model(X, theta)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{scaled\_X }\OperatorTok{=}\NormalTok{ scaled\_data[:, :}\DecValTok{3}\NormalTok{]}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ scaled\_data[:, }\DecValTok{3}\NormalTok{]}
+\NormalTok{predictions }\OperatorTok{=}\NormalTok{ predict(scaled\_X, theta)}
+\NormalTok{correct }\OperatorTok{=}\NormalTok{ [}\DecValTok{1} \ControlFlowTok{if}\NormalTok{ ((a }\OperatorTok{==} \DecValTok{1} \KeywordTok{and}\NormalTok{ b }\OperatorTok{==} \DecValTok{1}\NormalTok{) }\KeywordTok{or}\NormalTok{ (a }\OperatorTok{==} \DecValTok{0} \KeywordTok{and}\NormalTok{ b }\OperatorTok{==} \DecValTok{0}\NormalTok{)) }\ControlFlowTok{else} \DecValTok{0} \ControlFlowTok{for}\NormalTok{ (a, b) }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(predictions, y)]}
+\NormalTok{accuracy }\OperatorTok{=}\NormalTok{ (}\BuiltInTok{sum}\NormalTok{(}\BuiltInTok{map}\NormalTok{(}\BuiltInTok{int}\NormalTok{, correct)) }\OperatorTok{/} \BuiltInTok{len}\NormalTok{(correct))}
+\BuiltInTok{print}\NormalTok{ (}\StringTok{\textquotesingle{}accuracy = }\SpecialCharTok{\{0\}}\StringTok{\%\textquotesingle{}}\NormalTok{.}\BuiltInTok{format}\NormalTok{(accuracy}\OperatorTok{*}\DecValTok{100}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+accuracy = 90.4%
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ sklearn.metrics }\ImportTok{import}\NormalTok{ confusion\_matrix}
+
+\ImportTok{import}\NormalTok{ matplotlib.pyplot }\ImportTok{as}\NormalTok{ plt}
+
+\NormalTok{r1 }\OperatorTok{=}\NormalTok{ confusion\_matrix(y, predictions)}
+\NormalTok{guess }\OperatorTok{=}\NormalTok{ [}\StringTok{"1"}\NormalTok{,}\StringTok{"0"}\NormalTok{]}
+\NormalTok{fact }\OperatorTok{=}\NormalTok{ [ }\StringTok{"1"}\NormalTok{,}\StringTok{"0"}\NormalTok{]}
+\NormalTok{classes }\OperatorTok{=} \BuiltInTok{list}\NormalTok{(}\BuiltInTok{set}\NormalTok{(fact))}
+\CommentTok{\# classes.sort(reverse=True)}
+
+\NormalTok{plt.figure(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{12}\NormalTok{,}\DecValTok{10}\NormalTok{))       }\CommentTok{\#设置plt窗口的大小}
+\NormalTok{confusion }\OperatorTok{=}\NormalTok{r1}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"confusion"}\NormalTok{,confusion)}
+\NormalTok{plt.imshow(confusion, cmap}\OperatorTok{=}\NormalTok{plt.cm.Blues)}
+\NormalTok{indices }\OperatorTok{=} \BuiltInTok{range}\NormalTok{(}\BuiltInTok{len}\NormalTok{(confusion))}
+\NormalTok{indices2 }\OperatorTok{=} \BuiltInTok{range}\NormalTok{(}\DecValTok{3}\NormalTok{)}
+\NormalTok{plt.xticks(indices, classes,rotation}\OperatorTok{=}\DecValTok{40}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{18}\NormalTok{)}
+\NormalTok{plt.yticks([}\FloatTok{0.00}\NormalTok{,}\FloatTok{1.00}\NormalTok{], classes,fontsize}\OperatorTok{=}\DecValTok{18}\NormalTok{)}
+\NormalTok{plt.ylim(}\FloatTok{1.5}\NormalTok{ , }\OperatorTok{{-}}\FloatTok{0.5}\NormalTok{)   }\CommentTok{\#设置y的纵坐标的上下限}
+
+\NormalTok{plt.title(}\StringTok{"Confusion matrix"}\NormalTok{,fontdict}\OperatorTok{=}\NormalTok{\{}\StringTok{\textquotesingle{}weight\textquotesingle{}}\NormalTok{:}\StringTok{\textquotesingle{}1\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}size\textquotesingle{}}\NormalTok{: }\DecValTok{18}\NormalTok{\})}
+\CommentTok{\#设置color bar的标签大小}
+\NormalTok{cb}\OperatorTok{=}\NormalTok{plt.colorbar()}
+\NormalTok{cb.ax.tick\_params(labelsize}\OperatorTok{=}\DecValTok{18}\NormalTok{)}
+\NormalTok{plt.xlabel(}\StringTok{\textquotesingle{}Predict label\textquotesingle{}}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{18}\NormalTok{)}
+\NormalTok{plt.ylabel(}\StringTok{\textquotesingle{}True label\textquotesingle{}}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{18}\NormalTok{)}
+
+\BuiltInTok{print}\NormalTok{(}\StringTok{"len(confusion)"}\NormalTok{,}\BuiltInTok{len}\NormalTok{(confusion))}
+\ControlFlowTok{for}\NormalTok{ first\_index }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\BuiltInTok{len}\NormalTok{(confusion)):}
+    \ControlFlowTok{for}\NormalTok{ second\_index }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\BuiltInTok{len}\NormalTok{(confusion[first\_index])):}
+        \ControlFlowTok{if}\NormalTok{ confusion[first\_index][second\_index]}\OperatorTok{\textgreater{}}\DecValTok{200}\NormalTok{:}
+\NormalTok{            color}\OperatorTok{=}\StringTok{"w"}
+        \ControlFlowTok{else}\NormalTok{:}
+\NormalTok{            color}\OperatorTok{=}\StringTok{"black"}
+\NormalTok{        plt.text(first\_index, second\_index, confusion[first\_index][second\_index],fontsize}\OperatorTok{=}\DecValTok{18}\NormalTok{, color }\OperatorTok{=}\NormalTok{ color,verticalalignment}\OperatorTok{=}\StringTok{\textquotesingle{}center\textquotesingle{}}\NormalTok{,horizontalalignment}\OperatorTok{=}\StringTok{\textquotesingle{}center\textquotesingle{}}\NormalTok{,)}
+\NormalTok{plt.show()}
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+confusion [[657  41]
+ [ 55 247]]
+len(confusion) 2
+\end{verbatim}
+
+\includegraphics{53b2bf164efc8914b8a34e8a314606b07ab5ac5b.png}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+
+\end{document}
